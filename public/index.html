@@ -13,107 +13,119 @@
   <!-- TODO: найти нормальные иконки, текст вставить в title -->
 
   <noscript>You need to enable JavaScript to run this app.</noscript>
-  <header class="main_header">
-    <div class="container">
-      <div class="head_nav">
+  <header class="box main_header">
+    <div class="head_nav">
 
-        <div class="head_nav--logo">
-          <a href="#">
-            logo
-            <img src="" alt="">
-          </a>
+      <div class="head_nav--logo">
+        <a href="#">
+          logo
+          <img src="" alt="">
+        </a>
+      </div>
+
+      <div class="head_nav-item user_actions">
+
+        <div class="user_actions--favorite">
+          Добавить в избранное
         </div>
 
-        <div class="head_nav-item user_actions">
+        <!-- Для работы с JS использовать классы с нижним подчеркиванием. _noActive -->
+        <!-- В будущем нужно будет заменить. Сервер должен сам выдавать данные/разметку -->
+        <!-- Возможно, что даже не нужно будет завать компонент. Слишком жирно для такого блока -->
+        <div class="user_actions--account _NoActive">
 
-          <div class="user_actions--favorite">
-            Добавить в избранное
+          <div class="user_actions--sing_in">Войти</div>
+          <div class="user_actions--registration">Регистрация</div>
+        </div>
+
+        <!-- Вариант с залогиненым пользователем -->
+        <div class="user_actions--account _Active">
+
+          <!-- Список ингредиентов по выбранным рецептам. -->
+          <!-- TODO: Открывается отдельная страница. На ней будет 2 вида отображения: -->
+          <!-- 1. Полный - рецепты и их ингредиенты -->
+          <!-- 2. Упрощенный - список всех ингредиентов из всех рецептов без повторений -->
+          <div class="user_actions--list_ingredients">
+            Список ингредиентов
           </div>
-
-          <!-- Для работы с JS использовать классы с нижним подчеркиванием. _noActive -->
-          <!-- В будущем нужно будет заменить. Сервер должен сам выдавать данные/разметку -->
-          <!-- Возможно, что даже не нужно будет завать компонент. Слишком жирно для такого блока -->
-          <div class="user_actions--account _NoActive">
-
-            <div class="user_actions--sing_in">Войти</div>
-            <div class="user_actions--registration">Регистрация</div>
-          </div>
-
-          <!-- Вариант с залогиненым пользователем -->
-          <div class="user_actions--account _Active">
-
-            <!-- Список ингредиентов по выбранным рецептам. -->
-            <!-- TODO: Открывается отдельная страница. На ней будет 2 вида отображения: -->
-            <!-- 1. Полный - рецепты и их ингредиенты -->
-            <!-- 2. Упрощенный - список всех ингредиентов из всех рецептов без повторений -->
-            <div class="user_actions--list_ingredients">
-              Список ингредиентов
-            </div>
-            <div class="user_actions--profile">Профиль</div>
-
-          </div>
+          <div class="user_actions--profile">Профиль</div>
 
         </div>
 
       </div>
+
     </div>
   </header>
 
   <main>
     <!-- Изначально у нас, вроде, в планах не было сайдбара -->
     <!-- Я даже не знаю, что тут будет кроме поиска рецептов -->
-    <div class="container">
-      <div class="main_inner">
-        <aside class="main_sidebar">
-          <h3 class="main_sidebar-title">
-            Поиск
-          </h3>
-          <form class="main_sidebar--form" action="">
-            <!-- Идея по поводу полей ввода, поиск в каждом, 
-              а при вводе снизу появляется список элементов удовлетворяющий поиску 
-              (Похоже на select) -->
-            <div>
-              <span>Название</span>
-              <input type="text">
-            </div>
-            <div>
-              <span>Ингредиент</span>
-              <input type="text">
-            </div>
-            <div>
-              <span>Выберите кухню</span>
-              <select name="" id="">
-                <option value="">Болгарская</option>
-                <option value="">Русская</option>
-                <option value="">Итальянская</option>
-              </select>
-            </div>
-          </form>
-          <!-- <div class="side_item find_recipes">
+    
+    <div class="main_inner">
+      <aside class="main_sidebar">
+        <div class="side_item find_recipes">
 
-            <div class="side_item--icon find_recipes--icon">
-              Найти рецепты
-            </div>
-          </div> -->
-          <div class="main_sidebar--advertising">
-            Реклама
+          <div class="side_item--icon find_recipes--icon">
+            Найти рецепты
           </div>
-        </aside>
-        <div class="recipes_box">
-          <div class="recipes_box--title">Найдено <span>3</span> рецепта</div>
-          <div class="recipes_item">
-            <img src="" alt="">
-            <div class="recipes_item--info">
-              <h4 class="recipes_item--info__name">Название</h4>
-              <span>Время приготовления</span>
-              <span>0</span>
-              <span>КБЖУ на 100 гр</span>
-              <span>0/0/0/0</span>
+
+          <div class="find_recipes--box">
+            <h3 class="find_recipes-title">
+              Поиск
+            </h3>
+
+            <form class="find_recipes--form" action="">
+              <!-- Идея по поводу полей ввода, поиск в каждом, 
+                а при вводе снизу появляется список элементов удовлетворяющий поиску 
+                (Похоже на select) -->
+              <div>
+                <span>Название</span>
+                <input type="text">
+              </div>
+              <div>
+                <span>Выберите категорию</span>
+                <select name="" id="">
+                  <!-- Нужны подкатегории -->
+                  <option value="">Супчики</option> 
+                  <option value="">На второе</option>
+                </select>
+              </div>
+              <div>
+                <span>Выберите кухню</span>
+                <select name="" id="">
+                  <option value="">Болгарская</option>
+                  <option value="">Русская</option>
+                  <option value="">Итальянская</option>
+                </select>
+              </div>
+              <div>
+                <span>Ингредиент</span>
+                <input type="text">
+              </div>
+            </form>
+           
+            <div class="find_recipes--advertising">
+              Реклама
             </div>
+
+          </div>
+        </div> 
+      </aside>
+
+      <div class="recipes_box">
+        <div class="recipes_box--title">Найдено <span>3</span> рецепта</div>
+        <div class="recipes_item">
+          <img src="" alt="">
+          <div class="recipes_item--info">
+            <h4 class="recipes_item--info__name">Название</h4>
+            <span>Время приготовления</span>
+            <span>0</span>
+            <span>КБЖУ на 100 гр</span>
+            <span>0/0/0/0</span>
           </div>
         </div>
-        <div id="root"></div>
       </div>
+      <div id="root"></div>
     </div>
   </main>
 
