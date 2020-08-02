@@ -1,17 +1,28 @@
 <!DOCTYPE html>
 <html lang="ru">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>KiwiMaker</title>
-    <link rel="stylesheet" href="../src/scss/">
-  </head>
-  <body>
-    <!-- TODO: найти нормальные иконки, текст вставить в title -->
 
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <header class="main_header">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>KiwiMaker</title>
+  <link rel="stylesheet" href="../src/scss/">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <!-- TODO: найти нормальные иконки, текст вставить в title -->
+
+  <noscript>You need to enable JavaScript to run this app.</noscript>
+  <header class="main_header">
+    <div class="container">
       <div class="head_nav">
+
+        <div class="head_nav--logo">
+          <a href="#">
+            logo
+            <img src="" alt="">
+          </a>
+        </div>
 
         <div class="head_nav-item user_actions">
 
@@ -45,24 +56,68 @@
         </div>
 
       </div>
-    </header>
+    </div>
+  </header>
 
-    <main>
-      <!-- Изначально у нас, вроде, в планах не было сайдбара -->
-      <!-- Я даже не знаю, что тут будет кроме поиска рецептов -->
-      <aside class="main_sidebar">
+  <main>
+    <!-- Изначально у нас, вроде, в планах не было сайдбара -->
+    <!-- Я даже не знаю, что тут будет кроме поиска рецептов -->
+    <div class="container">
+      <div class="main_inner">
+        <aside class="main_sidebar">
+          <h3 class="main_sidebar-title">
+            Поиск
+          </h3>
+          <form class="main_sidebar--form" action="">
+            <!-- Идея по поводу полей ввода, поиск в каждом, 
+              а при вводе снизу появляется список элементов удовлетворяющий поиску 
+              (Похоже на select) -->
+            <div>
+              <span>Название</span>
+              <input type="text">
+            </div>
+            <div>
+              <span>Ингредиент</span>
+              <input type="text">
+            </div>
+            <div>
+              <span>Выберите кухню</span>
+              <select name="" id="">
+                <option value="">Болгарская</option>
+                <option value="">Русская</option>
+                <option value="">Итальянская</option>
+              </select>
+            </div>
+          </form>
+          <!-- <div class="side_item find_recipes">
 
-        <div class="side-item find_recipes">
-          
-          <div class="side-item--icon find_recipes--icon">
-            Найти рецепты
+            <div class="side_item--icon find_recipes--icon">
+              Найти рецепты
+            </div>
+          </div> -->
+          <div class="main_sidebar--advertising">
+            Реклама
+          </div>
+        </aside>
+        <div class="recipes_box">
+          <div class="recipes_box--title">Найдено <span>3</span> рецепта</div>
+          <div class="recipes_item">
+            <img src="" alt="">
+            <div class="recipes_item--info">
+              <h4 class="recipes_item--info__name">Название</h4>
+              <span>Время приготовления</span>
+              <span>0</span>
+              <span>КБЖУ на 100 гр</span>
+              <span>0/0/0/0</span>
+            </div>
           </div>
         </div>
-      </aside>
+        <div id="root"></div>
+      </div>
+    </div>
+  </main>
 
-      <div id="root"></div>
-    </main>
-    
 
-  </body>
+</body>
+
 </html>
