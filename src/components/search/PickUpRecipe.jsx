@@ -2,7 +2,19 @@ import React, { useState } from 'react';
 
 import { makePersonalLevels } from '../../../const'; // TODO for even__odd: сделать alias для const
 
-// TODO for qwekle: подключи стили  
+import TextField from '@material-ui/core/TextField';
+import Autocomplete from '@material-ui/lab/Autocomplete';
+
+// Массив с рецептами для select
+const top100Recipes = [
+    { name: 'Каша', time: '10мин' },
+    { name: 'Вода', time: '10мин' },
+    { name: 'Пельмени вареные', time: '10мин' },
+    { name: 'Пельмени жаренный', time: '10мин' },
+    { name: 'Бульмени', time: '10мин' },
+];
+
+// TODO for qwekle: подключи стили   // Не понял где они будут находится и будут ли они компилироваться (крч, оставил на потом, в любом случаи, это ненадолго)
 
 const { stub } = makePersonalLevels('PickUpRecipe');
 
@@ -13,7 +25,7 @@ const { stub } = makePersonalLevels('PickUpRecipe');
 const PickUpRecipe = () => {
 
     // Временная функция, в будущем заменить на хук serverRequest
-    function getCategoryList () {
+    function getCategoryList() {
         const name = '.getCategoryList';
         // Пока будет заглушкой
         console.debug(`${stub}${name} - return stub data`);
@@ -25,7 +37,7 @@ const PickUpRecipe = () => {
                     // Массив id-шников, либо просто сами категории.
                     // Возможно придется на сервере проверять id вложенных категорий 
                     // и отправлять только нужные
-                    subCategories: [], 
+                    subCategories: [],
                 },
                 2: {
                     title: 'На второе',
@@ -36,7 +48,7 @@ const PickUpRecipe = () => {
     }
 
     // Временная функция, в будущем заменить на хук serverRequest
-    function getKitchenList () {
+    function getKitchenList() {
         const name = '.getCategoryList';
         // Пока будет заглушкой
         console.debug(`${stub}${name} - return stub data`);
@@ -59,7 +71,7 @@ const PickUpRecipe = () => {
     // TODO for even_odd: Сделать хук для запроса на сервер
     // Используй axios
     // TODO for qwekle: почитай про axios и хуки для общего представления
-    function serverRequest () {
+    function serverRequest() {
 
     }
 
@@ -73,12 +85,20 @@ const PickUpRecipe = () => {
             </div>
 
             {/* TODO for qwekle: вынести в Select и определить какие нужны будут пропсы.
-             Select должен быть универсальным. Пока не нужно реализовывать */}
+             Select должен быть универсальным. Пока не нужно реализовывать */}                              {/* Думаю что option у селект должны отрисовываться на основе каких то данных */}
             <div>
                 <span>Выберите категорию</span>
+                {/* Селект из material UI с поиском */}
+                <Autocomplete
+                    id="combo-box-demo"
+                    options={top100Recipes}
+                    getOptionLabel={(option) => option.name}
+                    style={{ width: 300 }}
+                    renderInput={(params) => <TextField {...params} label="Combo box" variant="outlined" />}
+                />
                 <select name="" id="">
                     {/* Нужны подкатегории */}
-                    <option value="">Супчики</option> 
+                    <option value="">Супчики</option>
                     <option value="">На второе</option>
                 </select>
             </div>
